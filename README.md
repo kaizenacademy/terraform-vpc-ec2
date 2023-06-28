@@ -1,3 +1,5 @@
+Usage:
+
 ```hcl
 module "ec2" {
   source  = "kaizenacademy/ec2/vpc"

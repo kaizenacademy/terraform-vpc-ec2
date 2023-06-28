@@ -1,4 +1,6 @@
-Usage:
+# AWS Terraform module to create VPC and EC2 instance with apache installed
+
+## Usage:
 
 ```hcl
 module "ec2" {
@@ -15,4 +17,4 @@ module "ec2" {
   key_name = "new-key"
   instance_type = "t2.micro"
 }
-
+```

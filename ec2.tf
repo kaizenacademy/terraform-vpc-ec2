@@ -15,6 +15,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
+  depends_on = [aws_vpc.main]
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name = aws_key_pair.deployer1.key_name
@@ -24,6 +25,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_instance" "web1" {
+  depends_on = [aws_instance.web]
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name = aws_key_pair.deployer1.key_name

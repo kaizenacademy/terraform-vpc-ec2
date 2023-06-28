@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name = aws_key_pair.deployer1.key_name
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   subnet_id = aws_subnet.main2.id
@@ -25,7 +25,7 @@ resource "aws_instance" "web" {
 
 resource "aws_instance" "web1" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name = aws_key_pair.deployer1.key_name
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   subnet_id = aws_subnet.private2.id
@@ -34,7 +34,7 @@ resource "aws_instance" "web1" {
 
 
 resource "aws_key_pair" "deployer1" {
-  key_name   = "deployer-key1"
+  key_name   = var.key_name
   public_key = file("~/.ssh/id_rsa.pub")
 }
 
